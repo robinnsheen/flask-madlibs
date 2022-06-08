@@ -13,13 +13,14 @@ def return_home():
 
     return render_template("questions.html", story = silly_story.prompts)
 
-@app.get("/story")
+@app.get("/results")
 def render_story():
 
     word_list = {}
 
     for word in silly_story.prompts:
-        word_list[word] = request.arg(word)
+        value = request.args[word]
+        word_list[word] = value
 
     rendered_story = silly_story.generate(word_list)
 
