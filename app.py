@@ -11,7 +11,14 @@ debug = DebugToolbarExtension(app)
 @app.get("/")
 def return_home():
 
+    return render_template("select_menu.html")
+
+@app.get("/questions")
+def return_home():
+
+    story = request.args["stories"]
     return render_template("questions.html", story = silly_story.prompts)
+
 
 @app.get("/results")
 def render_story():
